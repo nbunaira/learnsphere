@@ -1,5 +1,9 @@
+"use client"
+
 import { Calendar, Clock } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { AnimateOnScroll, StaggerChildren, staggerItemVariants } from "@/components/AnimateOnScroll"
+import { motion } from "framer-motion"
 
 const events = [
   {
@@ -32,6 +36,7 @@ export function Events() {
       className="py-16 md:py-24 bg-slate-50 dark:bg-slate-900/50"
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        <AnimateOnScroll>
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-slate-900 dark:text-white">
             Join the Community
@@ -40,11 +45,13 @@ export function Events() {
             Upcoming events and live sessions to accelerate your learning
           </p>
         </div>
+        </AnimateOnScroll>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <StaggerChildren className="grid grid-cols-1 md:grid-cols-3 gap-6" staggerDelay={0.12}>
           {events.map((event) => (
-            <div
+            <motion.div
               key={event.title}
+              variants={staggerItemVariants}
               className="group rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-8 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
             >
               <div className="flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400 mb-2">
@@ -66,9 +73,9 @@ export function Events() {
               <Button className="w-full bg-amber-500 hover:bg-amber-600 text-white">
                 Register
               </Button>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </StaggerChildren>
       </div>
     </section>
   )

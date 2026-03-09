@@ -1,5 +1,9 @@
+"use client"
+
 import { Sparkles, CheckCircle, TrendingUp, ClipboardList } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { AnimateOnScroll, StaggerChildren, staggerItemVariants } from "@/components/AnimateOnScroll"
+import { motion } from "framer-motion"
 
 const engines = [
   {
@@ -43,6 +47,7 @@ export function Engines() {
       className="py-16 md:py-24 bg-slate-50 dark:bg-slate-900/50"
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        <AnimateOnScroll>
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-slate-900 dark:text-white">
             The Engines of AI Learning
@@ -51,13 +56,15 @@ export function Engines() {
             Four powerful modules working together to create your perfect learning experience
           </p>
         </div>
+        </AnimateOnScroll>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <StaggerChildren className="grid grid-cols-1 md:grid-cols-2 gap-6" staggerDelay={0.12}>
           {engines.map((engine) => {
             const Icon = engine.icon
             return (
-              <div
+              <motion.div
                 key={engine.title}
+                variants={staggerItemVariants}
                 className="group rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-8 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
               >
                 <div className="flex items-start gap-5">
@@ -82,10 +89,10 @@ export function Engines() {
                     </Button>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             )
           })}
-        </div>
+        </StaggerChildren>
       </div>
     </section>
   )

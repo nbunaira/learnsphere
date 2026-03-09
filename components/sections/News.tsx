@@ -1,4 +1,8 @@
+"use client"
+
 import { Badge } from "@/components/ui/badge"
+import { AnimateOnScroll, StaggerChildren, staggerItemVariants } from "@/components/AnimateOnScroll"
+import { motion } from "framer-motion"
 
 const newsItems = [
   {
@@ -39,6 +43,7 @@ export function News() {
   return (
     <section id="news" className="py-16 md:py-24 bg-white dark:bg-slate-950">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        <AnimateOnScroll>
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-slate-900 dark:text-white">
             News &amp; Platform Updates
@@ -47,11 +52,13 @@ export function News() {
             Stay up to date with the latest improvements and research
           </p>
         </div>
+        </AnimateOnScroll>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <StaggerChildren className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" staggerDelay={0.1}>
           {newsItems.map((item) => (
-            <div
+            <motion.div
               key={item.title}
+              variants={staggerItemVariants}
               className="group rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
             >
               <div className="flex items-center gap-3 mb-4">
@@ -79,9 +86,9 @@ export function News() {
               >
                 Read more &rarr;
               </a>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </StaggerChildren>
       </div>
     </section>
   )

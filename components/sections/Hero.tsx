@@ -3,6 +3,7 @@
 import Link from "next/link"
 import { buttonVariants } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
+import { AnimateOnScroll } from "@/components/AnimateOnScroll"
 
 const trustPartners = [
   "Hugging Face",
@@ -30,16 +31,21 @@ export function Hero() {
       </div>
 
       <div className="relative max-w-4xl mx-auto px-6 lg:px-8 text-center py-16 md:py-24">
+        <AnimateOnScroll>
         <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-slate-900 dark:text-white leading-tight">
           Adaptive AI Learning{" "}
           <span className="text-teal-600 dark:text-teal-400">for Every Mind</span>
         </h1>
+        </AnimateOnScroll>
 
+        <AnimateOnScroll delay={0.15}>
         <p className="mt-8 text-lg sm:text-xl md:text-2xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed">
           Personalized pathways powered by Qwen3, MiniMax, Grok, and Gemini.
           Master any skill with instant evaluation and adaptive tasks.
         </p>
+        </AnimateOnScroll>
 
+        <AnimateOnScroll delay={0.3}>
         <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
           <Link
             href="#learn"
@@ -60,7 +66,9 @@ export function Hero() {
             For Educators &amp; Admins
           </Link>
         </div>
+        </AnimateOnScroll>
 
+        <AnimateOnScroll delay={0.45}>
         {/* Trust bar */}
         <div className="mt-20 pt-10 border-t border-slate-200 dark:border-slate-800">
           <p className="text-xs text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-5">
@@ -77,6 +85,7 @@ export function Hero() {
             ))}
           </div>
         </div>
+        </AnimateOnScroll>
       </div>
     </section>
   )

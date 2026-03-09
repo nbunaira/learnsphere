@@ -1,5 +1,9 @@
+"use client"
+
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
+import { AnimateOnScroll, StaggerChildren, staggerItemVariants } from "@/components/AnimateOnScroll"
+import { motion } from "framer-motion"
 
 const courses = [
   {
@@ -40,6 +44,7 @@ export function FeaturedCourses() {
   return (
     <section id="learn" className="py-16 md:py-24 bg-white dark:bg-slate-950">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        <AnimateOnScroll>
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-slate-900 dark:text-white">
             Learning Across LearnSphere
@@ -48,11 +53,13 @@ export function FeaturedCourses() {
             Choose your path &mdash; or let the AI build it for you
           </p>
         </div>
+        </AnimateOnScroll>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <StaggerChildren className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" staggerDelay={0.1}>
           {courses.map((course) => (
-            <div
+            <motion.div
               key={course.title}
+              variants={staggerItemVariants}
               className="group rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden"
             >
               {/* Image placeholder */}
@@ -93,9 +100,9 @@ export function FeaturedCourses() {
                   {course.status}
                 </Button>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </StaggerChildren>
       </div>
     </section>
   )

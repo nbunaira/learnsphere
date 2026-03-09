@@ -1,6 +1,9 @@
+"use client"
+
 import Link from "next/link"
 import { Github } from "lucide-react"
 import { Separator } from "@/components/ui/separator"
+import { AnimateOnScroll } from "@/components/AnimateOnScroll"
 
 const footerLinks = {
   Product: [
@@ -32,6 +35,7 @@ export function Footer() {
   return (
     <footer className="bg-white dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800">
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16">
+        <AnimateOnScroll>
         <div className="grid grid-cols-2 md:grid-cols-5 gap-10">
           {/* Brand column */}
           <div className="col-span-2 md:col-span-1">
@@ -69,6 +73,7 @@ export function Footer() {
             </div>
           ))}
         </div>
+        </AnimateOnScroll>
 
         <Separator className="my-10 bg-slate-200 dark:bg-slate-800" />
 
